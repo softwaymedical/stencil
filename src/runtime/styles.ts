@@ -29,7 +29,10 @@ export const addStyle = (styleContainerNode: any, cmpMeta: d.ComponentRuntimeMet
   if (cmpMeta.$transformedTagName$) {
     const initialScopeId = scopeId;
     const transformedScopeId = getTransformedScopeId(cmpMeta, mode);
-    const transformScopeId = (initialCss: string) => {
+    const transformScopeId = (initialCss?: string) => {
+      if (initialCss == null) { 
+        return initialCss; 
+      }
       return initialCss.replace(new RegExp(initialScopeId,'g'), transformedScopeId);
     }
     scopeId = transformedScopeId
