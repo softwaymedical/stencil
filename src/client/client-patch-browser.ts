@@ -1,6 +1,6 @@
 import type * as d from '../declarations';
 import { BUILD, NAMESPACE } from '@app-data';
-import { consoleDevInfo, H, doc, plt, promiseResolve, win } from '@platform';
+import { consoleDevInfo, H, doc, plt, promiseResolve, win, getScriptElm} from '@platform';
 import { getDynamicImportFunction } from '@utils';
 
 export const patchBrowser = (): Promise<d.CustomElementsDefineOptions> => {
@@ -27,13 +27,7 @@ export const patchBrowser = (): Promise<d.CustomElementsDefineOptions> => {
     performance.getEntriesByName = () => [];
   }
 
-  // @ts-ignore
-  const scriptElm =
-    BUILD.scriptDataOpts || BUILD.safari10 || BUILD.dynamicImportShim
-      ? Array.from(doc.querySelectorAll('script')).find(
-          s => new RegExp(`\/${NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === NAMESPACE,
-        )
-      : null;
+  const scriptElm = getScriptElm();
   const importMeta = import.meta.url;
   const opts = BUILD.scriptDataOpts ? (scriptElm as any)['data-opts'] || {} : {};
 

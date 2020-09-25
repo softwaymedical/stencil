@@ -1,5 +1,5 @@
 import type * as d from '../declarations';
-import { BUILD } from '@app-data';
+import { BUILD, NAMESPACE } from '@app-data';
 
 export const win = typeof window !== 'undefined' ? window : ({} as Window);
 
@@ -49,4 +49,13 @@ export const supportsConstructibleStylesheets = BUILD.constructableCSS
     })()
   : false;
 
+export const getScriptElm = (): HTMLScriptElement => {
+  // @ts-ignore
+  return BUILD.scriptDataOpts || BUILD.safari10 || BUILD.dynamicImportShim
+      ? Array.from(doc.querySelectorAll('script')).find(
+          s => new RegExp(`\/${NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === NAMESPACE,
+        )
+      : null;
+};
+  
 export { H as HTMLElement };

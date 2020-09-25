@@ -21,6 +21,7 @@ export const bootstrapLazy = (lazyBundles: d.LazyBundlesRuntimeData, options: d.
   const endBootstrap = createTime('bootstrapLazy');
   const cmpTags: string[] = [];
   const exclude = options.exclude || [];
+  const transformTagName = options.transformTagName || null;
   const customElements = win.customElements;
   const head = doc.head;
   const metaCharset = /*@__PURE__*/ head.querySelector('meta[charset]');
@@ -74,8 +75,8 @@ export const bootstrapLazy = (lazyBundles: d.LazyBundlesRuntimeData, options: d.
       }
       const tagName = cmpMeta.$tagName$;
       let transformedTagName = null;
-      if (BUILD.transformTagName && options.transformTagName) {
-        transformedTagName = options.transformTagName(cmpMeta.$tagName$);
+      if (BUILD.transformTagName && transformTagName) {
+        transformedTagName = transformTagName(cmpMeta.$tagName$);
         cmpMeta.$transformedTagName$ = transformedTagName;
       }
       const HostElement = class extends HTMLElement {

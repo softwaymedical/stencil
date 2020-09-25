@@ -18,6 +18,9 @@ export const plt: d.PlatformRuntime = {
 export const cssVarShim: d.CssVarShim = false as any;
 export const supportsListenerOptions = true;
 export const supportsConstructibleStylesheets = false;
+
+export const getScriptElm = (): null => null;
+
 export const Context: any = {};
 
 export const setSupportsShadowDom = (supports: boolean) => {

@@ -12,6 +12,7 @@ export {
   startAutoApplyChanges,
   stopAutoApplyChanges,
   supportsConstructibleStylesheets,
+  getScriptElm,
   supportsListenerOptions,
   setSupportsShadowDom,
 } from './testing-platform';

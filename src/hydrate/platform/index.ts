@@ -107,6 +107,10 @@ export const supportsListenerOptions = false;
 
 export const supportsConstructibleStylesheets = false;
 
+export const getScriptElm = () => {
+  /* noop for hydrate */
+};
+
 const hostRefs: WeakMap<d.RuntimeRef, d.HostRef> = new WeakMap();
 
 export const getHostRef = (ref: d.RuntimeRef) => hostRefs.get(ref);
