@@ -12,10 +12,11 @@ export interface StencilConfig {
    */
   allowInlineScripts?: boolean;
   /**
-   * By default, Stencil will use the appropriate config to automatically prefix css. For example,
-   * developers can write modern and standard css properties, such as "transform", and Stencil
-   * will automatically add in the prefixed version, such as "-webkit-transform". To disable
-   * autoprefixing css, set this value to `false`.
+   * By setting `autoprefixCss` to `true`, Stencil will use the appropriate config to automatically
+   * prefix css. For example, developers can write modern and standard css properties, such as
+   * "transform", and Stencil will automatically add in the prefixed version, such as "-webkit-transform".
+   * As of Stencil v2, autoprefixing CSS is no longer the default.
+   * Defaults to `false`
    */
   autoprefixCss?: boolean | any;
 
@@ -199,7 +200,7 @@ export interface StencilConfig {
   /**
    * Provide a object of key/values accessible within the app, using the `Env` object.
    */
-  env?: {[prop: string]: string | undefined};
+  env?: { [prop: string]: string | undefined };
 
   globalScript?: string;
   srcIndexHtml?: string;
@@ -410,6 +411,31 @@ export interface StencilDevServerConfig {
    */
   reloadStrategy?: PageReloadStrategy;
   /**
+   * Local path to a NodeJs file with a dev server request listener as the default export.
+   * The user's request listener is given the first chance to handle every request the dev server
+   * receives, and can choose to handle it or instead pass it on to the default dev server
+   * by calling `next()`.
+   *
+   * Below is an example of a NodeJs file the `requestListenerPath` config is using.
+   * The request and response arguments are the same as Node's `http` module and `RequestListener`
+   * callback. https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener
+   *
+   * ```js
+   * module.exports = function (req, res, next) {
+   *    if (req.url === '/ping') {
+   *      // custom response overriding the dev server
+   *      res.setHeader('Content-Type', 'text/plain');
+   *      res.writeHead(200);
+   *      res.end('pong');
+   *    } else {
+   *      // pass request on to the default dev server
+   *      next();
+   *    }
+   * };
+   * ```
+   */
+  requestListenerPath?: string;
+  /**
    * The root directory to serve the files from.
    */
   root?: string;
@@ -421,7 +447,12 @@ export interface StencilDevServerConfig {
    */
   ssr?: boolean;
   /**
-   * If to use the dev server's websocket client or not. Defaults to `true`.
+   * If the dev server fails to start up within the given timout (in milliseconds), the startup will
+   * be canceled. Set to zero to disable the timeout. Defaults to `15000`.
+   */
+  startupTimeout?: number;
+  /**
+   * Whether to use the dev server's websocket client or not. Defaults to `true`.
    */
   websocket?: boolean;
   /**
@@ -440,7 +471,6 @@ export interface DevServerConfig extends StencilDevServerConfig {
   prerenderConfig?: string;
   protocol?: 'http' | 'https';
   srcIndexHtml?: string;
-  startupTimeout?: number;
 }
 
 export interface HistoryApiFallback {
@@ -1857,7 +1887,11 @@ export interface OutputTargetBaseNext {
 export interface OutputTargetDistCustomElements extends OutputTargetBaseNext {
   type: 'dist-custom-elements';
   empty?: boolean;
+  externalRuntime?: boolean;
   copy?: CopyTask[];
+  inlineDynamicImports?: boolean;
+  includeGlobalScripts?: boolean;
+  minify?: boolean;
 }
 
 export interface OutputTargetDistCustomElementsBundle extends OutputTargetBaseNext {
@@ -1866,6 +1900,8 @@ export interface OutputTargetDistCustomElementsBundle extends OutputTargetBaseNe
   externalRuntime?: boolean;
   copy?: CopyTask[];
   inlineDynamicImports?: boolean;
+  includeGlobalScripts?: boolean;
+  minify?: boolean;
 }
 
 export interface OutputTargetBase {
