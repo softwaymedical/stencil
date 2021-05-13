@@ -1,11 +1,13 @@
-import * as d from '../declarations';
+const tagMap: {[tagName: string]: string} = {};
 
-const options: d.CustomElementsDefineOptions = {};
+export const setTransformedTagName = (tagName: string, transformedTagName: string) => {
+  tagMap[tagName] = transformedTagName;
+}
 
-export const setOptions = (opts: d.CustomElementsDefineOptions) => {
-    Object.assign(options, opts);
-};
+export const getTagName = (tagName: string) => {
+  return tagMap[tagName] || tagName
+}
 
-export const getOptions = () => {
-  return options; 
-};
+export const getCustomTags = () => {
+  return Object.keys(tagMap);
+}

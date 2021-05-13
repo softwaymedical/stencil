@@ -1,6 +1,6 @@
 import type * as d from '../declarations';
 import { appDidLoad } from './update-component';
-import { setOptions } from './options';
+import { setTransformedTagName } from './options';
 import { BUILD } from '@app-data';
 import { CMP_FLAGS } from '@utils';
 import { connectedCallback } from './connected-callback';
@@ -34,7 +34,6 @@ export const bootstrapLazy = (lazyBundles: d.LazyBundlesRuntimeData, options: d.
   let i = 0;
 
   Object.assign(plt, options);
-  setOptions(options);
   plt.$resourcesUrl$ = new URL(options.resourcesUrl || './', doc.baseURI).href;
   if (BUILD.asyncQueue) {
     if (options.syncQueue) {
@@ -80,6 +79,7 @@ export const bootstrapLazy = (lazyBundles: d.LazyBundlesRuntimeData, options: d.
       if (BUILD.transformTagName && transformTagName) {
         transformedTagName = transformTagName(cmpMeta.$tagName$);
         cmpMeta.$transformedTagName$ = transformedTagName;
+        setTransformedTagName(cmpMeta.$tagName$, cmpMeta.$transformedTagName$);
       }
       const HostElement = class extends HTMLElement {
         ['s-p']: Promise<void>[];
