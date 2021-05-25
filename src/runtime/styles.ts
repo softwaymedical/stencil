@@ -4,6 +4,7 @@ import { CMP_FLAGS } from '@utils';
 import { doc, plt, styles, supportsConstructibleStylesheets, supportsShadow } from '@platform';
 import { HYDRATED_STYLE_ID, NODE_TYPE } from './runtime-constants';
 import { createTime } from './profile';
+import { getCustomTags, getTagName } from "../runtime/options";
 
 const rootAppliedStyles: d.RootAppliedStyleMap = /*@__PURE__*/ new WeakMap();
 
@@ -33,7 +34,11 @@ export const addStyle = (styleContainerNode: any, cmpMeta: d.ComponentRuntimeMet
       if (initialCss == null) { 
         return initialCss; 
       }
-      return initialCss.replace(new RegExp(initialScopeId,'g'), transformedScopeId);
+      initialCss = initialCss.replace(new RegExp(initialScopeId,'g'), transformedScopeId);
+      for (let tagName of getCustomTags()) {
+        initialCss = initialCss.replace(new RegExp(`(?<=[^.#a-z-])${tagName}(?=[^_\\-.a-z0-9])`, "g"), getTagName(tagName));
+      }
+      return initialCss;
     }
     scopeId = transformedScopeId
     if (style instanceof CSSStyleSheet){

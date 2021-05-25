@@ -3,10 +3,19 @@ import { isOutputTargetDistCustomElementsBundle } from '../output-utils';
 import { dirname, join, relative } from 'path';
 import { normalizePath, dashToPascalCase } from '@utils';
 
-export const generateCustomElementsTypes = async (config: d.Config, compilerCtx: d.CompilerCtx, buildCtx: d.BuildCtx, distDtsFilePath: string) => {
+export const generateCustomElementsBundleTypes = async (
+  config: d.Config,
+  compilerCtx: d.CompilerCtx,
+  buildCtx: d.BuildCtx,
+  distDtsFilePath: string,
+) => {
   const outputTargets = config.outputTargets.filter(isOutputTargetDistCustomElementsBundle);
 
-  await Promise.all(outputTargets.map(outputTarget => generateCustomElementsTypesOutput(config, compilerCtx, buildCtx, distDtsFilePath, outputTarget)));
+  await Promise.all(
+    outputTargets.map(outputTarget =>
+      generateCustomElementsTypesOutput(config, compilerCtx, buildCtx, distDtsFilePath, outputTarget),
+    ),
+  );
 };
 
 const generateCustomElementsTypesOutput = async (
@@ -24,7 +33,7 @@ const generateCustomElementsTypesOutput = async (
   const code = [
     `/* ${config.namespace} custom elements bundle */`,
     ``,
-    `import { Components, JSX } from "${componentsDtsRelPath}";`,
+    `import type { Components, JSX } from "${componentsDtsRelPath}";`,
     ``,
     ...components.map(generateCustomElementType),
     `/**`,
@@ -51,8 +60,16 @@ const generateCustomElementsTypesOutput = async (
     ` */`,
     `export declare const setAssetPath: (path: string) => void;`,
     ``,
-    `export { Components, JSX };`,
-    ``
+    `export interface SetPlatformOptions {`,
+    `  raf?: (c: FrameRequestCallback) => number;`,
+    `  ael?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;`,
+    `  rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;`,
+    `  ce?: (eventName: string, opts?: any) => CustomEvent;`,
+    `}`,
+    `export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;`,
+    ``,
+    `export type { Components, JSX };`,
+    ``,
   ];
 
   const usersIndexJsPath = join(config.srcDir, 'index.ts');
@@ -64,7 +81,9 @@ const generateCustomElementsTypesOutput = async (
     code.push(`export * from '${componentsDtsRelPath}';`);
   }
 
-  await compilerCtx.fs.writeFile(customElementsDtsPath, code.join('\n') + `\n`, { outputTargetType: outputTarget.type });
+  await compilerCtx.fs.writeFile(customElementsDtsPath, code.join('\n') + `\n`, {
+    outputTargetType: outputTarget.type,
+  });
 };
 
 const generateCustomElementType = (cmp: d.ComponentCompilerMeta) => {

@@ -11,7 +11,11 @@ import { removeCollectionImports } from '../../transformers/remove-collection-im
 import { STENCIL_INTERNAL_CLIENT_ID, USER_INDEX_ENTRY_ID, STENCIL_APP_GLOBALS_ID } from '../../bundle/entry-alias-ids';
 import { updateStencilCoreImports } from '../../transformers/update-stencil-core-import';
 
-export const outputCustomElementsBundle = async (config: d.Config, compilerCtx: d.CompilerCtx, buildCtx: d.BuildCtx) => {
+export const outputCustomElementsBundle = async (
+  config: d.Config,
+  compilerCtx: d.CompilerCtx,
+  buildCtx: d.BuildCtx,
+) => {
   if (!config.buildDist) {
     return;
   }
@@ -28,7 +32,12 @@ export const outputCustomElementsBundle = async (config: d.Config, compilerCtx: 
   timespan.finish(`generate custom elements bundle finished`);
 };
 
-const bundleCustomElements = async (config: d.Config, compilerCtx: d.CompilerCtx, buildCtx: d.BuildCtx, outputTarget: d.OutputTargetDistCustomElementsBundle) => {
+const bundleCustomElements = async (
+  config: d.Config,
+  compilerCtx: d.CompilerCtx,
+  buildCtx: d.BuildCtx,
+  outputTarget: d.OutputTargetDistCustomElementsBundle,
+) => {
   try {
     const bundleOpts: BundleOptions = {
       id: 'customElementsBundle',
@@ -41,7 +50,7 @@ const bundleCustomElements = async (config: d.Config, compilerCtx: d.CompilerCtx
         index: '\0core',
       },
       loader: {
-        '\0core': generateEntryPoint(buildCtx),
+        '\0core': generateEntryPoint(outputTarget, buildCtx),
       },
       inlineDynamicImports: outputTarget.inlineDynamicImports,
       preserveEntrySignatures: 'allow-extension',
@@ -57,19 +66,23 @@ const bundleCustomElements = async (config: d.Config, compilerCtx: d.CompilerCtx
         hoistTransitiveImports: false,
         preferConst: true,
       });
+
+      const minify = outputTarget.externalRuntime || outputTarget.minify !== true ? false : config.minifyJs;
       const files = rollupOutput.output.map(async bundle => {
         if (bundle.type === 'chunk') {
           let code = bundle.code;
           const optimizeResults = await optimizeModule(config, compilerCtx, {
             input: code,
             isCore: bundle.isEntry,
-            minify: outputTarget.externalRuntime ? false : config.minifyJs,
+            minify,
           });
           buildCtx.diagnostics.push(...optimizeResults.diagnostics);
           if (!hasError(optimizeResults.diagnostics) && typeof optimizeResults.output === 'string') {
             code = optimizeResults.output;
           }
-          await compilerCtx.fs.writeFile(join(outputTarget.dir, bundle.fileName), code, { outputTargetType: outputTarget.type });
+          await compilerCtx.fs.writeFile(join(outputTarget.dir, bundle.fileName), code, {
+            outputTargetType: outputTarget.type,
+          });
         }
       });
       await Promise.all(files);
@@ -79,18 +92,20 @@ const bundleCustomElements = async (config: d.Config, compilerCtx: d.CompilerCtx
   }
 };
 
-const generateEntryPoint = (buildCtx: d.BuildCtx) => {
+const generateEntryPoint = (outputTarget: d.OutputTargetDistCustomElementsBundle, buildCtx: d.BuildCtx) => {
   const imp: string[] = [];
   const exp: string[] = [];
   const exportNames: string[] = [];
 
   imp.push(
     `import { proxyCustomElement } from '${STENCIL_INTERNAL_CLIENT_ID}';`,
-    `export { setAssetPath } from '${STENCIL_INTERNAL_CLIENT_ID}';`,
+    `export { setAssetPath, setPlatformOptions } from '${STENCIL_INTERNAL_CLIENT_ID}';`,
     `export * from '${USER_INDEX_ENTRY_ID}';`,
-    `import { globalScripts } from '${STENCIL_APP_GLOBALS_ID}';`,
-    `globalScripts();`,
   );
+
+  if (outputTarget.includeGlobalScripts !== false) {
+    imp.push(`import { globalScripts } from '${STENCIL_APP_GLOBALS_ID}';`, `globalScripts();`);
+  }
 
   buildCtx.components.forEach(cmp => {
     const exportName = dashToPascalCase(cmp.tagName);
@@ -133,5 +148,9 @@ const getCustomElementBundleCustomTransformer = (config: d.Config, compilerCtx: 
     style: 'static',
     styleImportData: 'queryparams',
   };
-  return [updateStencilCoreImports(transformOpts.coreImportPath), nativeComponentTransform(compilerCtx, transformOpts), removeCollectionImports(compilerCtx)];
+  return [
+    updateStencilCoreImports(transformOpts.coreImportPath),
+    nativeComponentTransform(compilerCtx, transformOpts),
+    removeCollectionImports(compilerCtx),
+  ];
 };

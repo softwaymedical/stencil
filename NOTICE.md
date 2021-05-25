@@ -8,6 +8,7 @@ The published Stencil distribution contains the following licenses:
     CC-BY-4.0
     ISC
     MIT
+    MIT OR GPL-2.0-or-later
 
 The following distributions have been modified to be bundled within this distribution:
 
@@ -753,8 +754,6 @@ License: MIT
 
 Author: Jorge Bucaran
 
-Homepage: https://github.com/jorgebucaran/colorette
-
 > Copyright © Jorge Bucaran <<https://jorgebucaran.com>>
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -873,6 +872,24 @@ Homepage: https://github.com/TehShrike/deepmerge
 
 --------
 
+## `define-lazy-prop`
+
+License: MIT
+
+Author: [Sindre Sorhus](sindresorhus.com)
+
+> MIT License
+> 
+> Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------
+
 ## `electron-to-chromium`
 
 License: ISC
@@ -979,6 +996,38 @@ Homepage: https://github.com/epoberezkin/fast-deep-equal#readme
 
 --------
 
+## `fraction.js`
+
+License: MIT OR GPL-2.0-or-later
+
+Author: Robert Eisele <robert@xarg.org> (http://www.xarg.org/)
+
+Homepage: http://www.xarg.org/2014/03/rational-numbers-in-javascript/
+
+> MIT License
+> 
+> Copyright (c) 2017 Robert Eisele
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
+
+--------
+
 ## `fs.realpath`
 
 License: ISC
@@ -1028,39 +1077,6 @@ Author: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)
 >   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 >   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 >   DEALINGS IN THE SOFTWARE.
-
---------
-
-## `fsevents`
-
-License: MIT
-
-Contributors: Philipp Dunkel, Ben Noordhuis, Elan Shankar, Miroslav Bajtoš, [Paul Miller](https://paulmillr.com)
-
-Homepage: https://github.com/fsevents/fsevents
-
-> MIT License
-> -----------
-> 
-> Copyright (C) 2010-2020 by Philipp Dunkel, Ben Noordhuis, Elan Shankar, Paul Miller
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
 
 --------
 
@@ -1116,24 +1132,6 @@ License: ISC
 
 --------
 
-## `has-flag`
-
-License: MIT
-
-Author: [Sindre Sorhus](sindresorhus.com)
-
-> MIT License
-> 
-> Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
---------
-
 ## `inflight`
 
 License: ISC
@@ -1186,11 +1184,11 @@ License: ISC
 
 License: MIT
 
-Author: [Sindre Sorhus](sindresorhus.com)
+Author: [Sindre Sorhus](https://sindresorhus.com)
 
 > MIT License
 > 
-> Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+> Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 > 
@@ -1340,6 +1338,35 @@ Author: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)
 
 --------
 
+## `nanoid`
+
+License: MIT
+
+Author: Andrey Sitnik <andrey@sitnik.ru>
+
+> The MIT License (MIT)
+> 
+> Copyright 2017 Andrey Sitnik <andrey@sitnik.ru>
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy of
+> this software and associated documentation files (the "Software"), to deal in
+> the Software without restriction, including without limitation the rights to
+> use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+> the Software, and to permit persons to whom the Software is furnished to do so,
+> subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+> FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+> COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+> IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+> CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------
+
 ## `node-fetch`
 
 License: MIT
@@ -1429,36 +1456,6 @@ Author: [James Talmage](github.com/jamestalmage)
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 > THE SOFTWARE.
-
---------
-
-## `num2fraction`
-
-License: MIT
-
-Author: [yisi](http://iyunlu.com/view)
-
-> The MIT License (MIT)
-> 
-> Copyright (c) 2014 PostCSS
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all
-> copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-> SOFTWARE.
 
 --------
 
@@ -1856,7 +1853,7 @@ Homepage: https://rollupjs.org/
 > 
 > > MIT License
 > > 
-> > Copyright (C) 2012-2018 by various contributors (see AUTHORS)
+> > Copyright (C) 2012-2020 by various contributors (see AUTHORS)
 > > 
 > > Permission is hereby granted, free of charge, to any person obtaining a copy
 > > of this software and associated documentation files (the "Software"), to deal
@@ -1882,33 +1879,6 @@ Homepage: https://rollupjs.org/
 > License: MIT
 > By: Adrian Heine
 > Repository: https://github.com/acornjs/acorn-class-fields
-> 
-> > Copyright (C) 2017-2018 by Adrian Heine
-> > 
-> > Permission is hereby granted, free of charge, to any person obtaining a copy
-> > of this software and associated documentation files (the "Software"), to deal
-> > in the Software without restriction, including without limitation the rights
-> > to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> > copies of the Software, and to permit persons to whom the Software is
-> > furnished to do so, subject to the following conditions:
-> > 
-> > The above copyright notice and this permission notice shall be included in
-> > all copies or substantial portions of the Software.
-> > 
-> > THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> > IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> > FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> > AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> > THE SOFTWARE.
-> 
-> ---------------------------------------
-> 
-> ## acorn-numeric-separator
-> License: MIT
-> By: Adrian Heine
-> Repository: https://github.com/acornjs/acorn-numeric-separator
 > 
 > > Copyright (C) 2017-2018 by Adrian Heine
 > > 
@@ -1993,7 +1963,7 @@ Homepage: https://rollupjs.org/
 > 
 > > MIT License
 > > 
-> > Copyright (C) 2012-2018 by various contributors (see AUTHORS)
+> > Copyright (C) 2012-2020 by various contributors (see AUTHORS)
 > > 
 > > Permission is hereby granted, free of charge, to any person obtaining a copy
 > > of this software and associated documentation files (the "Software"), to deal
@@ -2663,7 +2633,7 @@ Author: [Terkel Gjervig](https://terkel.com)
 
 License: MIT
 
-Author: [JS Foundation and other contributors](https://github.com/jquery/sizzle/blob/2.3.4/AUTHORS.txt)
+Author: [JS Foundation and other contributors](https://github.com/jquery/sizzle/blob/2.3.6/AUTHORS.txt)
 
 Homepage: https://sizzlejs.com
 
@@ -2803,24 +2773,6 @@ Homepage: https://github.com/Rich-Harris/sourcemap-codec
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 > THE SOFTWARE.
-
---------
-
-## `supports-color`
-
-License: MIT
-
-Author: [Sindre Sorhus](sindresorhus.com)
-
-> MIT License
-> 
-> Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------
 
