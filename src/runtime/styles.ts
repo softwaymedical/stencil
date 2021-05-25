@@ -36,7 +36,7 @@ export const addStyle = (styleContainerNode: any, cmpMeta: d.ComponentRuntimeMet
       }
       initialCss = initialCss.replace(new RegExp(initialScopeId,'g'), transformedScopeId);
       for (let tagName of getCustomTags()) {
-        initialCss = initialCss.replace(new RegExp(`(?<=[^.,#>~+*])${tagName}(?=[^_\\-.a-z0-9])`, "g"), getTagName(tagName));
+        initialCss = initialCss.replace(new RegExp(`(?<=[^.#a-z-])${tagName}(?=[^_\\-.a-z0-9])`, "g"), getTagName(tagName));
       }
       return initialCss;
     }
